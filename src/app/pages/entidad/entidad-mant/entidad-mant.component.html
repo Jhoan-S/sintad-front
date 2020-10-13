@@ -1,0 +1,81 @@
+<div class="wrapper">
+
+    <form class="example-form" novalidate [formGroup]="entidadForm" (ngSubmit)="modificarAgregarEntidad()">
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Seleccione Documento</mat-label>
+                        <mat-select [(value)]="selectedDoc" formControlName="id_tipo_documento">
+                          <mat-option>None</mat-option>
+                          <mat-option *ngFor="let doc of documentos" [value]="doc.id_tipo_documento">{{doc.nombre}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>N° de Documento</mat-label>
+                        <input matInput formControlName="nro_documento">
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+    
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Razón Social</mat-label>
+                        <input matInput formControlName="razon_social">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Nombre Comercial</mat-label>
+                        <input matInput formControlName="nombre_comercial">
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Dirección</mat-label>
+                        <input matInput formControlName="direccion">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Teléfono</mat-label>
+                        <input matInput formControlName="telefono">
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Seleccione Contribuyente</mat-label>
+                        <mat-select [(value)]="selectedCont" formControlName="id_tipo_contribuyente">
+                          <mat-option>None</mat-option>
+                          <mat-option *ngFor="let cont of contribuyentes" [value]="cont.id_tipo_contribuyente">{{cont.nombre}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <section class="example-section">
+                        <mat-checkbox class="example-margin" formControlName="estado">Status</mat-checkbox>
+                    </section>
+                </td>
+            </tr>
+        </table>
+        <div class="btn-group">
+            <button type="submit" class="button">{{ entId ? 'Actualizar Entidad' : 'Nueva Entidad' }}</button>
+            <div class="button" (click)="goback()">Cancelar</div>
+        </div>
+    </form>
+
+</div>

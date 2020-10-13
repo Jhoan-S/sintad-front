@@ -1,0 +1,25 @@
+<div class="wrapper">
+
+    <form class="example-form" novalidate [formGroup]="contribuyenteForm" (ngSubmit)="modificarAgregarContribuyente()">
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput formControlName="nombre">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <section class="example-section">
+                        <mat-checkbox class="example-margin" formControlName="estado">Status</mat-checkbox>
+                    </section>
+                </td>
+            </tr>
+        </table>
+        <div class="btn-group">
+            <button type="submit" class="button">{{ contId ? 'Actualizar Contribuyente' : 'Nuevo Contribuyente' }}</button>
+            <div class="button" (click)="goback()">Cancelar</div>
+        </div>
+    </form>
+
+</div>

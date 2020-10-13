@@ -1,0 +1,34 @@
+<div class="wrapper">
+    <table mat-table [dataSource]="contribuyentes" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> ID. </th>
+            <td mat-cell *matCellDef="let element"> {{ element.id_tipo_contribuyente }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let element"> {{ element.nombre }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="estado">
+            <th mat-header-cell *matHeaderCellDef> Estado </th>
+            <td mat-cell *matCellDef="let element"> {{ (element.estado) ? 'Activado' : 'Desactivado' }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Acción </th>
+            <td mat-cell *matCellDef="let element">
+                <div class="buttons">
+                    <i class='bx bxs-plus-square botones' style='color:#9f00bc'></i>
+                    <i class='bx bx-paint botones' style='color:#008a07' (click)="editarContribuyente(element)"></i>
+                    <i class='bx bxs-trash botones' style='color:#ff0000' (click)="deactivateContribuyente(element)"></i>
+                </div>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <button class="button" routerLink="createCont">Nuevo Contribuyente</button>
+</div>

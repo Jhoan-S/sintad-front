@@ -1,0 +1,45 @@
+<div class="wrapper">
+    <table mat-table [dataSource]="documentos" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> ID. </th>
+            <td mat-cell *matCellDef="let element"> {{ element.id_tipo_documento }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="codigo">
+            <th mat-header-cell *matHeaderCellDef> Código </th>
+            <td mat-cell *matCellDef="let element"> {{ element.codigo }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let element"> {{ element.nombre }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="descripcion">
+            <th mat-header-cell *matHeaderCellDef> Descripción </th>
+            <td mat-cell *matCellDef="let element"> {{ element.descripcion }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="estado">
+            <th mat-header-cell *matHeaderCellDef> Estado </th>
+            <td mat-cell *matCellDef="let element"> {{ (element.estado) ? 'Activado' : 'Desactivado' }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Acción </th>
+            <td mat-cell *matCellDef="let element">
+                <div class="buttons">
+                    <i class='bx bxs-plus-square botones' style='color:#9f00bc'></i>
+                    <i class='bx bx-paint botones' style='color:#008a07' (click)="editarDocumento(element)"></i>
+                    <i class='bx bxs-trash botones' style='color:#ff0000' (click)="deactivateDocumento(element)"></i>
+                </div>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <button class="button" routerLink="createDoc">Nuevo Documento</button>
+</div>
